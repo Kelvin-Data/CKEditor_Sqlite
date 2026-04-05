@@ -30,11 +30,10 @@ def submit():
         conn = sqlite3.connect("flask_ckeditor/message.db")
         c = conn.cursor()
         try:
-            query = ("""INSERT INTO message
-                        VALUES (:id, :name, :email, :subscribe, :message)""")
+            query = """INSERT INTO message (name, email, subscribe, message)
+               VALUES (:name, :email, :subscribe, :message)""" 
 
             my_data = {
-                'id' : None,
                 'name': name,
                 'email': email,
                 'subscribe': subscribe,
