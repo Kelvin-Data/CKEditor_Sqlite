@@ -3,6 +3,20 @@ from flask import (Flask, render_template, redirect,
 from form import ContactForm
 from flask_ckeditor import CKEditor
 import sqlite3
+import os
+import sqlite3
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_dir = os.path.join(BASE_DIR, "flask_ckeditor")
+
+# Ensure folder exists
+os.makedirs(db_dir, exist_ok=True)
+
+# Full database path
+db_path = os.path.join(db_dir, "message.db")
+
+# Connect to database
+conn = sqlite3.connect(db_path)
 
 app = Flask(__name__)
 
