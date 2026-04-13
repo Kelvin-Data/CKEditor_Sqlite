@@ -16,7 +16,7 @@ os.makedirs(db_dir, exist_ok=True)
 db_path = os.path.join(db_dir, "message.db")
 
 # Connect to database
-conn = sqlite3.connect(db_path)
+# conn = sqlite3.connect(db_path)
 
 app = Flask(__name__)
 
@@ -41,7 +41,8 @@ def submit():
         subscribe = form.subscribe.data
         message = form.message.data
         
-        conn = sqlite3.connect("flask_ckeditor/message.db")
+        # conn = sqlite3.connect("flask_ckeditor/message.db")
+        conn = sqlite3.connect(db_path)
         c = conn.cursor()
         try:
             query = """INSERT INTO message (name, email, subscribe, message)
