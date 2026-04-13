@@ -6,6 +6,14 @@ import sqlite3
 import os
 import sqlite3
 
+app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'mysecretkey'
+app.config['CKEDITOR_PKG_TYPE'] = 'full-all'
+
+ckeditor = CKEditor(app)
+
+# Connect to message.db in PythonAnywhere
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_dir = os.path.join(BASE_DIR, "flask_ckeditor")
 
@@ -14,16 +22,6 @@ os.makedirs(db_dir, exist_ok=True)
 
 # Full database path
 db_path = os.path.join(db_dir, "message.db")
-
-# Connect to database
-# conn = sqlite3.connect(db_path)
-
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'mysecretkey'
-app.config['CKEDITOR_PKG_TYPE'] = 'full-all'
-
-ckeditor = CKEditor(app)
 
 ################# Route ##################
 @app.route('/')
