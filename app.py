@@ -4,7 +4,6 @@ from form import ContactForm
 from flask_ckeditor import CKEditor
 import sqlite3
 import os
-import sqlite3
 
 app = Flask(__name__)
 
